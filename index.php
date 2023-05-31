@@ -15,5 +15,5 @@
     //Booking instances
     $b1 = new Booking ($micka,$r3,"11-03-2021","12-03-2021");
 
-    echo $b1;
+    echo $hilton->showRooms();
 ?>

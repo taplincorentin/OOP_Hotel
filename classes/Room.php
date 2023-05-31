@@ -14,6 +14,7 @@
             $this->_price = $price;
             $this->_availability = $availability;
             $this->_wifi = $wifi;
+            $this->_hotel->addRoom($this);
         }
 
         //getters
@@ -62,5 +63,8 @@
         public function __toString(){
     		return $this->get_hotel()." ".$this->get_number()." ".$this->get_price()." ".$this->get_availability()." ".$this->get_wifi();
         }
+
+        
+        
     }
 ?>
