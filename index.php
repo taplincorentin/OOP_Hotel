@@ -3,4 +3,7 @@
 
     $micka = new Client ("MURMANN","Micka");
     echo $micka;
+
+    $b1 = new Booking ("01-01-2021","02-01-2021");
+    echo $b1;
 ?>
