@@ -11,6 +11,8 @@
             $this->_room = $room;
             $this->_startDate = new DateTime($startDate);
             $this->_endDate = new DateTime($endDate);
+            $this->_client->addBookings($this);
+            $this->_room->addBookings($this);
         }
 
         //getters

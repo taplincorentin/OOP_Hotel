@@ -5,6 +5,7 @@
         private int $_price;
         private bool $_availability;
         private bool $_wifi;
+        private array $_bookings;
 
 
         //constructor
@@ -38,6 +39,10 @@
             return $this->_wifi;
         }
 
+        public function get_bookings(){
+            return $this->_bookings;
+        }
+
         //setters
         public function set_hotel($hotel){
             $this->_hotel = $hotel;
@@ -59,12 +64,19 @@
             $this->_wifi = $wifi;
         }
 
+        public function set_bookings($bookings){
+            $this->_bookings=$bookings;
+        }
+
         // toString method
         public function __toString(){
     		return $this->get_hotel()." ".$this->get_number()." ".$this->get_price()." ".$this->get_availability()." ".$this->get_wifi();
         }
 
-        
+        //add booking method to keep track in array of bookings for this room
+        public function addBookings(Booking $booking){
+            $this->_bookings []= $booking;
+        }
         
     }
 ?>
