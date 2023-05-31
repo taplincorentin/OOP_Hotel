@@ -45,5 +45,18 @@
         public function addBookings(Booking $booking){
             $this->_bookings []= $booking;
         }
+
+        //show all bookings for a room
+        public function showBookings(){
+
+            $result = "bookings from ".$this->get_name()." ".$this->get_fName().": <br>";
+			$bookings = $this->get_bookings();
+			foreach($bookings as $booking){
+                $wifi = $booking->get_room()->get_wifi() ? "Yes" : "No";
+                
+				$result .= $booking->get_room()->get_hotel()->get_name()." / Room : ". $booking->get_room()->get_number()." (".$booking->get_room()->get_price()." - Wifi : ".$wifi.") - from ".$booking->get_startDate()->format("d-M-Y")." till ".$booking->get_startDate()->format("d-M-Y")."<br>";
+			}
+			return $result;
+        }
     }
 ?>

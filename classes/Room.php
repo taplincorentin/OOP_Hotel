@@ -9,11 +9,11 @@
 
 
         //constructor
-        function __construct(Hotel $hotel, int $number, int $price, bool $availability, bool $wifi){
+        function __construct(Hotel $hotel, int $number, int $price, bool $wifi){
             $this->_hotel = $hotel;
             $this->_number = $number;
             $this->_price = $price;
-            $this->_availability = $availability;
+            $this->_availability = true;
             $this->_wifi = $wifi;
             $this->_hotel->addRoom($this);
         }
@@ -78,5 +78,14 @@
             $this->_bookings []= $booking;
         }
         
+        //show all bookings for a room
+        public function showBookings(){
+            $result = "";
+			$bookings = $this->get_bookings();
+			foreach($bookings as $booking){
+				$result .= $booking->get_client()." - Room ".$booking->get_room()->get_number()." - from ".$booking->get_startDate()->format("d-m-Y")." till ".$booking->get_endDate()->format("d-m-Y")."<br>";
+			}
+			return $result;
+        }
     }
 ?>

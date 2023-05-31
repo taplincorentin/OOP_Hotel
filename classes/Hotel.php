@@ -59,6 +59,41 @@
 			}
 			return $result;
         }
+        
+
+
+        //Methods to get info about an hotel
+        public function totalRooms(){
+            return count($this->get_rooms());
+        }
+
+        public function nbBookedRooms(){
+            $res = 0;
+            $rooms=$this->get_rooms();
+            foreach($rooms as $room){
+                if($room->get_availability()==false){
+                    $res++;
+                }
+            }
+            return $res;
+        }  
        
+        public function getHotelInfo(){
+            return $this->get_name()."<br>".$this->get_address()."<br>Number of rooms: ".$this->totalRooms()."<br>Number of booked rooms: ".$this->nbBookedRooms()."<br>Number of available rooms: ".$this->totalRooms()-$this->nbBookedRooms()."<br>";
+        }
+
+
+
+        //method to show all bookings
+        public function showBookedRooms(){
+            $res = "";
+            $rooms=$this->get_rooms();
+            foreach($rooms as $room){
+                if($room->get_availability()==false){
+                    $res .= $room->showBookings();
+                }
+            }
+            return $res;
+        }
     }
 ?>

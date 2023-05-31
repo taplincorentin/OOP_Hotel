@@ -13,6 +13,7 @@
             $this->_endDate = new DateTime($endDate);
             $this->_client->addBookings($this);
             $this->_room->addBookings($this);
+            $this->_room->set_availability(false);
         }
 
         //getters
@@ -51,7 +52,7 @@
 
         //toString method
         public function __toString(){
-            return $this->get_client()." ".$this->get_room()." ".$this->get_startDate()->format("d-m-Y")." ".$this->get_endDate()->format("d-m-Y");
+            return $this->get_client()." - Room ".$this->get_room()->get_number()." - from".$this->get_startDate()->format("d-m-Y")." till ".$this->get_endDate()->format("d-m-Y");
         }
     }
 ?>
