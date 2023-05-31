@@ -1,6 +1,9 @@
 <?php
     spl_autoload_register(function($class_name){require 'classes/'.$class_name.'.php';});
 
+    //Hotel instances
+    $hilton = new Hotel("Hilton ****","10 route de la Gare 67000 STRASBOURG");
+    echo $hilton;
     //Client instances
     $micka = new Client ("MURMANN","Micka");
     $virgile = new Client ("Gibello","Virgile");
