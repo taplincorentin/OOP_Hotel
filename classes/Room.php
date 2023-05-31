@@ -1,5 +1,6 @@
 <?php
     class Room {
+        private Hotel $_hotel;
         private int $_number;
         private int $_price;
         private bool $_availability;
@@ -7,7 +8,8 @@
 
 
         //constructor
-        function __construct(int $number, int $price, bool $availability, bool $wifi){
+        function __construct(Hotel $hotel, int $number, int $price, bool $availability, bool $wifi){
+            $this->_hotel = $hotel;
             $this->_number = $number;
             $this->_price = $price;
             $this->_availability = $availability;
@@ -15,6 +17,10 @@
         }
 
         //getters
+        public function get_hotel(){
+            return  $this->_hotel;
+        }
+
         public function get_number() {
             return $this->_number;
         }
@@ -32,6 +38,10 @@
         }
 
         //setters
+        public function set_hotel($hotel){
+            $this->_hotel = $hotel;
+        }
+
         public function set_number($number){
             $this->_number = $number;
         }
@@ -50,7 +60,7 @@
 
         // toString method
         public function __toString(){
-    		return $this->get_number()." ".$this->get_price()." ".$this->get_availability()." ".$this->get_wifi();
+    		return $this->get_hotel()." ".$this->get_number()." ".$this->get_price()." ".$this->get_availability()." ".$this->get_wifi();
         }
     }
 ?>
