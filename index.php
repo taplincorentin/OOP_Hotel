@@ -24,11 +24,12 @@
     $b2 = new Booking ($micka, $r3,"11-03-2021","15-03-2021");
     $b3 = new Booking ($micka, $r4, "01-04-2021", "17-04-2021");
 
-    echo $hilton->showRooms()."<br>";
+    
     
     
     echo $hilton->getHotelInfo()."<br>";
     echo $hilton->showBookedRooms()."<br>";
     echo $micka->showBookings()."<br>";
+    echo $hilton->showRooms()."<br>";
     
 ?>

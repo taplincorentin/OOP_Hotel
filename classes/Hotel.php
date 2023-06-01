@@ -52,11 +52,15 @@
         
         //show all rooms from a hotel
         public function showRooms(){
-            $result = "rooms in this hotel: <br>";
+            $result = "rooms in this hotel: <br><table> <tr>
+            <th>ROOM</th><th>PRICE</th><th>Wifi</th><th>AVAILABILITY</th></tr>";
 			$rooms = $this->get_rooms();
 			foreach($rooms as $room){
-				$result .= $room->get_number()."<br>";
+                $wifi = $room->get_wifi() ? "Yes" : "No";
+                $availability = $room->get_availability() ? '<font color="green"> Available. </font>' : '<font color="red"> Unavailable </font>';
+				$result .= "<tr><td>Room ".$room->get_number()."</td><td>".$room->get_price()." €</td><td>".$wifi."</td><td>".$availability."</td></tr>";
 			}
+            $result.="</table>";
 			return $result;
         }
         
