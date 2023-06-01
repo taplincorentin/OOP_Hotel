@@ -51,7 +51,7 @@
         }
         
         //show all rooms from a hotel
-        public function showRooms(){
+        /*public function showRooms(){
             $result = "rooms in this hotel: <br><table> <tr>
             <th>ROOM</th><th>PRICE</th><th>Wifi</th><th>AVAILABILITY</th></tr>";
 			$rooms = $this->get_rooms();
@@ -62,6 +62,30 @@
 			}
             $result.="</table>";
 			return $result;
+        }*/
+        //better method using php in html
+        public function showRooms(){
+            $rooms = $this->get_rooms();
+            ?>
+            
+            rooms in this hotel: <br>
+            <table> 
+                <tr>
+                    <th>ROOM</th><th>PRICE</th><th>Wifi</th><th>AVAILABILITY</th>
+                </tr> <?php
+            foreach($rooms as $room){
+                $wifi = $room->get_wifi() ? "📶" : ""; //// utf8 emoji added
+                $availability = $room->get_availability() ? '<span style="color:green"> Available </span>' : '<span style="color:red"> Unavailable </span>'; //// span instead of font; style instead of color
+                
+                 ?>
+
+                <tr>
+                    <td>Room <?= $room->get_number() ?></td><td><?= $room->get_price() ?> €</td><td><?= $wifi ?></td><td><?=$availability ?></td>
+                </tr>
+                <?php
+            }
+            ?> </table> <?php
+            
         }
         
 
